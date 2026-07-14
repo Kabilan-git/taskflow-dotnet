@@ -5,7 +5,7 @@ using TaskService.Common.Mediator;
 var builder = WebApplication.CreateBuilder(args);
 // Service Registration
 builder.Services.AddEndpoints(typeof(Program).Assembly);
-builder.Services.AddSingleton<IMediator, Mediator>();
+builder.Services.AddMediator(typeof(Program).Assembly);
 builder.Services.AddOpenApi();
 
 var app = builder.Build();
