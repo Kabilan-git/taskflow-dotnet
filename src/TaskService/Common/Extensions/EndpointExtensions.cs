@@ -10,20 +10,25 @@ namespace TaskService.Common.Extensions
 {
     public static class EndpointExtensions
     {
-        public static IServiceCollection AddEndpoints(this IServiceCollection services)
+        public static IServiceCollection AddEndpoints(this IServiceCollection services, params Assembly[] assemblies)
         {
             var endpointType = typeof(IEndpoint);
 
-            var endpoints = Assembly
-                .GetExecutingAssembly()
-                .DefinedTypes
-                .Where(type => endpointType.IsAssignableFrom(type)
+            var endpoints = assemblies
+                    .SelectMany(x => x.DefinedTypes)
+                    .Where(type => endpointType.IsAssignableFrom(type)
                                 && !type.IsInterface
                                 && !type.IsAbstract);
 
+            // var endpoints = Assembly.GetExecutingAssembly()
+            //     .DefinedTypes
+            //     .Where(type => endpointType.IsAssignableFrom(type)
+            //                     && !type.IsInterface
+            //                     && !type.IsAbstract);
+
             foreach (var endpoint in endpoints)
             {
-                services.AddTransient(endpoint);
+                services.AddTransient(endpointType, endpoint);
             }
             return services;
         }
