@@ -6,5 +6,10 @@ using TaskService.Common.Mediator;
 
 namespace TaskService.Features.Tasks.CreateTask
 {
-    public sealed record CreateTaskCommand(string Title, string? Description) : IRequest<CreateTaskResponse>;
+    public sealed record CreateTaskCommand(
+        string Title,
+        string? Description,
+        DateTime StartDate,
+        DateTime EndDate,
+        string Category) : IRequest<CreateTaskResponse>;
 }
