@@ -67,10 +67,12 @@ namespace TaskService.Features.Tasks.GetTasks
                 query = query.OrderByDescending(x => x.CreatedDate);
             }
 
-            int totalcount = await query.CountAsync();
+            int totalcount = await query.CountAsync(cancellationToken);
 
             int skip = (request.page - 1) * request.pageSize;
-            query = query.Skip(skip);
+            query = query
+                .TagWith("GetTasks paged projection")
+                .Skip(skip);
 
             int take = request.pageSize;
             query = query.Take(take);

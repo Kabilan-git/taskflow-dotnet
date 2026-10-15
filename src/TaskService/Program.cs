@@ -1,7 +1,10 @@
 using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Diagnostics;
+using Microsoft.Extensions.Logging;
 using Scalar.AspNetCore;
 using TaskService.Common.Extensions;
 using TaskService.Common.Mediator;
+using TaskService.Features.Learning.NPlusOne;
 using TaskService.Infrastructure.Persistence;
 using TaskService.Infrastructure.Persistence.Context;
 
@@ -23,6 +26,10 @@ app.MapOpenApi();
 app.MapScalarApiReference();
 app.MapEndpoints();
 
+if (app.Environment.IsDevelopment())
+{
+  app.MapNPlusOneLearningEndpoints();
+}
 
 app.MapGet("/", () => "Hello World!");
 
