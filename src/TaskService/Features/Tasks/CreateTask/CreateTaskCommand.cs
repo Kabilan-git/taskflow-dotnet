@@ -11,5 +11,5 @@ namespace TaskService.Features.Tasks.CreateTask
         string? Description,
         DateTime StartDate,
         DateTime EndDate,
-        string Category) : IRequest<CreateTaskResponse>;
+        Guid Category) : IRequest<CreateTaskResponse>;
 }

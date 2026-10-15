@@ -14,7 +14,8 @@ namespace TaskService.Domain.Entities
         public TaskItemStatus Status { get; set; }
         public DateTime StartDate { get; set; }
         public DateTime EndDate { get; set; }
-        public string Category { get; set; } = null!;
+        public Guid CategoryId { get; set; }
+        public Category Category { get; set; } = null!;
         public bool IsDeleted { get; set; }
         public bool IsActive { get; set; }
         public DateTime CreatedDate { get; set; }

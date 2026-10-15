@@ -18,7 +18,7 @@ namespace TaskService.Features.Tasks.CreateTask
                 Status = TaskItemStatus.Pending,
                 StartDate = request.StartDate,
                 EndDate = request.EndDate,
-                Category = request.Category,
+                CategoryId = request.Category,
                 IsDeleted = false,
                 IsActive = true,
                 CreatedDate = DateTime.UtcNow,

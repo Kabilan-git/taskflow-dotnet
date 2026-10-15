@@ -10,7 +10,7 @@ namespace TaskService.Features.Tasks.GetTasks
         Guid Id,
         string Title,
         string Description,
-        string Category,
+        CatergoryResponse Category,
         string Status
 
     );

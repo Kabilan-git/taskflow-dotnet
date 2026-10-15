@@ -10,10 +10,10 @@ namespace TaskService.Infrastructure.Persistence.Context
     public sealed class TaskDbContext(DbContextOptions<TaskDbContext> options) : DbContext(options)
     {
         public DbSet<TaskItem> Tasks => Set<TaskItem>();
+        public DbSet<Category> Categories => Set<Category>();
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-
             modelBuilder.ApplyConfigurationsFromAssembly(typeof(TaskDbContext).Assembly);
 
             base.OnModelCreating(modelBuilder);

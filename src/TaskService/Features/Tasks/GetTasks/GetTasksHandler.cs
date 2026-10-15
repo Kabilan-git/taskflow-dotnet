@@ -57,8 +57,8 @@ namespace TaskService.Features.Tasks.GetTasks
                         descending ? query.OrderByDescending(x => x.Status)
                                     : query.OrderBy(x => x.Status),
                     TaskSortBy.Category =>
-                        descending ? query.OrderByDescending(x => x.Category)
-                                    : query.OrderBy(x => x.Category),
+                        descending ? query.OrderByDescending(x => x.Category.Name)
+                                    : query.OrderBy(x => x.Category.Name),
                     _ => query
                 };
             }

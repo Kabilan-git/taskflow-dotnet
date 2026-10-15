@@ -34,10 +34,6 @@ namespace TaskService.Infrastructure.Persistence.Configuration
             builder.Property(x => x.EndDate)
                 .IsRequired();
 
-            builder.Property(x => x.Category)
-                .HasMaxLength(100)
-                .IsRequired();
-
             builder.Property(x => x.IsDeleted)
                 .HasDefaultValue(false);
 
