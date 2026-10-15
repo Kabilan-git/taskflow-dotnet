@@ -28,7 +28,8 @@ namespace TaskService.Common.Mediator
 
                 services.AddTransient(service, handler);
             }
-            services.AddSingleton<IMediator, Mediator>();
+            // Scoped so the mediator resolves handlers (and their DbContext) from the current request scope.
+            services.AddScoped<IMediator, Mediator>();
             return services;
         }
     }

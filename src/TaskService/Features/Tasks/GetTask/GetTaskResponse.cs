@@ -1,3 +1,5 @@
+using TaskService.Features.Tasks.GetTasks;
+
 namespace TaskService.Features.Tasks.GetTask;
 
 public record class GetTaskResponse
@@ -5,6 +7,6 @@ public record class GetTaskResponse
 Guid Id,
 string Title,
 string Description,
-string Category,
+CatergoryResponse Category,
 string Status
 );
